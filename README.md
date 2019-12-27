@@ -230,4 +230,4 @@ source activate opencv
 
 After that we execute the following code we can test the camera (the code is available in the **python-test** folder):
 ![OpenCV logo](./images/Python-Sample-Code.png)
-*Figure 1. Code to test the camera and image loading in Python*
+*Figure 5. Code to test the camera and image loading in Python*
