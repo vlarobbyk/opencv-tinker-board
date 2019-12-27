@@ -205,6 +205,7 @@ v4l2-ctl --list-devices
 ```
 The command will provide the following result (Figure 3):
 ![OpenCV logo](./images/USB-Camera-ID-Number.png)
+
 *Figure 3. v4l2-ctl command to determine where is attached the USB Camera*
 
 As it can be seen, the camera is attached to dev4.
@@ -212,6 +213,7 @@ As it can be seen, the camera is attached to dev4.
 ## Testing OpenCV in C++
 With the following code we can test the camera (the code is available in the **cpp-test** folder):
 ![OpenCV logo](./images/CPP-Sample-Code.png)
+
 *Figure 4. C++ Code to test the camera and image loading*
 
 To compile the code you can use the following code (please **pay attention to your install dir**):
@@ -230,4 +232,5 @@ source activate opencv
 
 After that we execute the following code we can test the camera (the code is available in the **python-test** folder):
 ![OpenCV logo](./images/Python-Sample-Code.png)
+
 *Figure 5. Code to test the camera and image loading in Python*
