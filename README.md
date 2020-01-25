@@ -3,7 +3,9 @@
 ![OpenCV logo](./images/LogoOpenCV2.png)  ![OpenCV logo](./images/TinkerBoard.png)
 
 How to install OpenCV 4.2 with Python (Berryconda) and C++ Support
-In this tutorial, we will provide some directions for installing [OpenCV 4.2](https://opencv.org/release/opencv-4-2-0/) (C++, Python 2.7 and Python 3.5 using [Berryconda](https://github.com/vlarobbyk/berryconda) on Tinker  Operating System on [Tinker Board](https://www.asus.com/us/Single-Board-Computer/Tinker-Board/). We will also provide a sample code that shows how to use the [ELP USB Camera Module] (https://www.amazon.com/ELP-Camera-megapixel-Fisheye-machine/dp/B01HD1V3UO).
+In this tutorial, we will provide some directions for installing [OpenCV 4.2](https://opencv.org/release/opencv-4-2-0/) (C\+\+, Python 2.7 and Python 3.5 using [Berryconda](https://github.com/vlarobbyk/berryconda) on Tinker  Operating System on [Tinker Board](https://www.asus.com/us/Single-Board-Computer/Tinker-Board/). We will also provide a sample code that shows how to use the [ELP USB Camera Module](https://www.amazon.com/ELP-Camera-megapixel-Fisheye-machine/dp/B01HD1V3UO).
+
+This repository also provides three sample codes to test the installation: a simple video capture code for C++ and Python, and a shape and color recognizer using [Hu Moments](https://www.learnopencv.com/shape-matching-using-hu-moments-c-python/) (C\+\+).
 
 ## Step 1: Update OS packages
 ```
@@ -210,7 +212,7 @@ The command will provide the following result (Figure 3):
 
 As it can be seen, the camera is attached to dev4.
 
-## Testing OpenCV in C++
+## Testing (1) OpenCV in C\+\+: Simple Video Capture Example
 With the following code we can test the camera (the code is available in the **cpp-test** folder):
 ![OpenCV logo](./images/CPP-Sample-Code.png)
 
@@ -224,7 +226,7 @@ To run the code simple execute:
 ```
 ./test.bin
 ```
-## Testing OpenCV in Python
+## Testing (2) OpenCV in Python
 Firstly, we must activate the conda environment:
 ```
 source activate opencv
@@ -234,3 +236,34 @@ After that we execute the following code we can test the camera (the code is ava
 ![OpenCV logo](./images/Python-Sample-Code.png)
 
 *Figure 5. Code to test the camera and image loading in Python*
+
+## Testing (3) OpenCV in C\+\+: Hu Moments to recognize 3 different shapes
+This code implements an Object-Oriented example to recognize three different shapes (with different colors) using the seven Hu Invariant Moments. Please note that this code can be improved, adding filters and other image's pre-processing algorithms. The source code is available in the "cpp-humoments-test" directory.
+
+Please, take into account that the code is **only for demonstrative purposes**, and was quickly developed **under certain light conditions** (Figure 6):
+
+![OpenCV logo](./images/Ligh-Conditions.png)
+
+*Figure 6. Light conditions used to determine the segmentation threshold ranges.*
+
+
+To compile the code you must execute the following command (considering where was installed your OpenCV libraries):
+```
+g++ Principal.cpp HuMomentsExtractor.cpp -I//home/linaro/aplicaciones/Librerias/opencv/opencvi/include/opencv4 -L/home/linaro/aplicaciones/Librerias/opencv/opencvi/lib/ -lopencv_core -lopencv_highgui -lopencv_imgproc -lopencv_imgcodecs -lopencv_video -lopencv_videoio -o huM.bin
+```
+
+The code can be executed in two modes: a) to test thresholds range through the trackbars (passing 1 has command line parameter), and b) to detect and identify the shapes one, we have changed the HSV values (min and max) and Hu Moments (passing 2 as command line parameter).
+```
+---> Testing thresholds and using trackbars
+./huM.bin 1
+---> Detection mode
+./huM.bin 2
+```
+
+**Please be aware of using an appropriate cooling system for the Tinker Board!**
+
+The following video shows how works the recognition process in the Tinker Board, using the Fisheye Camera (180 Degrees):
+
+[![Audi R8](./images/Video-Prev.png)](./videos/Shape-Recognition-Hu-Moments.mp4 "Video Sample Hu Moments")
+
+[![Sample video of shape recognition through Hu Moments]({./images/Video-Prev.png})]({./videos/Shape-Recognition-Hu-Moments.mp4} "Link Title")
